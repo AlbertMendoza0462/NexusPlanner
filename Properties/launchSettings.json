@@ -26,7 +26,10 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7289;http://localhost:5298",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "EMAIL_ADDRESS": "validsyntax056@gmail.com",
+        "EMAIL_NAME": "Nexus Planner Team",
+        "EMAIL_PASSWORD": "fouc zwam vtrl mffq"
       }
     },
     "IIS Express": {

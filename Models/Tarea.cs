@@ -21,7 +21,7 @@ namespace NexusPlanner.Models
         public DateOnly FechaFinal { get; set; }
         [Required]
         public DateTime FechaCreacion { get; set; }
-        [MinLength(1), Required]
+        [Range(1, int.MaxValue), Required]
         public int Estado { get; set; }
         public Proyecto? Proyecto { get; set; }
         public Usuario? Usuario { get; set; }

@@ -19,12 +19,12 @@ namespace NexusPlanner.Models
         public DateOnly FechaFinal { get; set; }
         [Required]
         public DateTime FechaCreacion { get; set; }
-        [MinLength(1), Required]
+        [Range(1, int.MaxValue), Required]
         public int Estado { get; set; }
         public Usuario? Usuario { get; set; }
         [NotMapped]
-        public List<Usuario> Colaboradores { get; set; }
+        public List<Usuario>? Colaboradores { get; set; }
         [NotMapped]
-        public List<Tarea> Tareas { get; set; }
+        public List<Tarea>? Tareas { get; set; }
     }
 }

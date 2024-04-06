@@ -84,6 +84,7 @@ namespace NexusPlanner.BLL
             entidad.Clave = EncryptSHA256.GetSHA256(entidad.Clave);
             entidad.FechaCreacion = DateTime.Now;
             entidad.Estado = 1;
+            entidad.Rol = 2;
 
             _contexto.Add(entidad);
             var guardo = await _contexto.SaveChangesAsync() > 0;

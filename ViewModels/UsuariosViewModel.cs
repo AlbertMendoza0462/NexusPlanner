@@ -13,6 +13,7 @@ namespace NexusPlanner.ViewModels
         public string? Correo { get; }
         public string? Telefono { get; set; }
         public int? Estado { get; set; }
+        public int? Rol { get; set; }
         public List<Proyecto>? Proyectos { get; set; }
 
         public UsuariosViewModel() { }
@@ -25,6 +26,7 @@ namespace NexusPlanner.ViewModels
             this.Correo = usuario.Correo;
             this.Telefono = usuario.Telefono;
             this.Estado = usuario.Estado;
+            this.Rol = usuario.Rol;
             this.Proyectos = usuario.Proyectos;
         }
 
@@ -47,6 +49,7 @@ namespace NexusPlanner.ViewModels
         public string? Apellido { get; set; }
         public string? Correo { get; set; }
         public string? Telefono { get; set; }
+        public int? Rol { get; set; }
         public string? Clave { get; set; }
         public string? ClaveNueva { get; set; }
         public string? ClaveConfirmacion { get; set; }

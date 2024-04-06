@@ -12,7 +12,7 @@ using NexusPlanner.DAL;
 namespace NexusPlanner.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240405184716_InitialCreate")]
+    [Migration("20240406152033_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -125,7 +125,7 @@ namespace NexusPlanner.Migrations
                             ProyectoId = 1,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1221),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4737),
                             FechaFinal = new DateOnly(2025, 3, 3),
                             Nombre = "Proyecto de ejemplo",
                             UsuarioId = 1
@@ -135,7 +135,7 @@ namespace NexusPlanner.Migrations
                             ProyectoId = 2,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1224),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4741),
                             FechaFinal = new DateOnly(2026, 6, 6),
                             Nombre = "Proyecto de ejemplo 1",
                             UsuarioId = 2
@@ -145,7 +145,7 @@ namespace NexusPlanner.Migrations
                             ProyectoId = 3,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1226),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4742),
                             FechaFinal = new DateOnly(2027, 9, 9),
                             Nombre = "Proyecto de ejemplo 2",
                             UsuarioId = 3
@@ -188,7 +188,7 @@ namespace NexusPlanner.Migrations
                         {
                             SolicitudId = 1,
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1317),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4831),
                             ProyectoId = 1,
                             UsuarioId = 4
                         },
@@ -196,7 +196,7 @@ namespace NexusPlanner.Migrations
                         {
                             SolicitudId = 2,
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1320),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4833),
                             ProyectoId = 1,
                             UsuarioId = 5
                         },
@@ -204,7 +204,7 @@ namespace NexusPlanner.Migrations
                         {
                             SolicitudId = 3,
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1321),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4834),
                             ProyectoId = 2,
                             UsuarioId = 1
                         },
@@ -212,7 +212,7 @@ namespace NexusPlanner.Migrations
                         {
                             SolicitudId = 4,
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1323),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4835),
                             ProyectoId = 2,
                             UsuarioId = 5
                         },
@@ -220,7 +220,7 @@ namespace NexusPlanner.Migrations
                         {
                             SolicitudId = 5,
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1324),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4836),
                             ProyectoId = 3,
                             UsuarioId = 1
                         },
@@ -228,7 +228,7 @@ namespace NexusPlanner.Migrations
                         {
                             SolicitudId = 6,
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1325),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4837),
                             ProyectoId = 3,
                             UsuarioId = 2
                         });
@@ -278,7 +278,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 1,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1274),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4786),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo",
                             ProyectoId = 1,
@@ -289,7 +289,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 2,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1276),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4789),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 1",
                             ProyectoId = 1,
@@ -300,7 +300,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 3,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1278),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4790),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 2",
                             ProyectoId = 1,
@@ -311,7 +311,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 4,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1280),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4792),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 3",
                             ProyectoId = 1,
@@ -322,7 +322,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 5,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1282),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4793),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 4",
                             ProyectoId = 2,
@@ -333,7 +333,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 6,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1283),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4795),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 5",
                             ProyectoId = 2,
@@ -344,7 +344,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 7,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1285),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4796),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 6",
                             ProyectoId = 2,
@@ -355,7 +355,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 8,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1286),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4797),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 7",
                             ProyectoId = 2,
@@ -366,7 +366,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 9,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1288),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4799),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 8",
                             ProyectoId = 3,
@@ -377,7 +377,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 10,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1290),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4800),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 9",
                             ProyectoId = 3,
@@ -388,7 +388,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 11,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1291),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4801),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 10",
                             ProyectoId = 3,
@@ -399,7 +399,7 @@ namespace NexusPlanner.Migrations
                             TareaId = 12,
                             Descripcion = "Esta es la descripción",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1292),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4803),
                             FechaFinal = new DateOnly(2024, 9, 10),
                             Nombre = "Tarea de ejemplo 11",
                             ProyectoId = 3,
@@ -437,6 +437,9 @@ namespace NexusPlanner.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Rol")
+                        .HasColumnType("int");
+
                     b.Property<string>("Telefono")
                         .HasColumnType("nvarchar(max)");
 
@@ -452,8 +455,9 @@ namespace NexusPlanner.Migrations
                             Clave = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
                             Correo = "a@a.a",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(992),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4516),
                             Nombre = "Albert",
+                            Rol = 1,
                             Telefono = "8494736796"
                         },
                         new
@@ -463,8 +467,9 @@ namespace NexusPlanner.Migrations
                             Clave = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
                             Correo = "i@i.i",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1023),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4539),
                             Nombre = "Iris",
+                            Rol = 1,
                             Telefono = "8494736796"
                         },
                         new
@@ -474,8 +479,9 @@ namespace NexusPlanner.Migrations
                             Clave = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
                             Correo = "r@r.r",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1048),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4559),
                             Nombre = "Ronald",
+                            Rol = 1,
                             Telefono = "8494736796"
                         },
                         new
@@ -485,8 +491,9 @@ namespace NexusPlanner.Migrations
                             Clave = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
                             Correo = "o@o.o",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1076),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4616),
                             Nombre = "Oly",
+                            Rol = 2,
                             Telefono = "8494736796"
                         },
                         new
@@ -496,8 +503,9 @@ namespace NexusPlanner.Migrations
                             Clave = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
                             Correo = "j@j.j",
                             Estado = 1,
-                            FechaCreacion = new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1118),
+                            FechaCreacion = new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4637),
                             Nombre = "Jarissa",
+                            Rol = 2,
                             Telefono = "8494736796"
                         });
                 });

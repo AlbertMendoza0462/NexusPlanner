@@ -44,11 +44,11 @@ namespace NexusPlanner.DAL
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Usuario>().HasData(
-                new Usuario { UsuarioId = 1, Nombre = "Albert", Apellido = "Mendoza", Correo = "a@a.a", Telefono = "8494736796", Clave = EncryptSHA256.GetSHA256("1234"), FechaCreacion = DateTime.Now, Estado = 1 },
-                new Usuario { UsuarioId = 2, Nombre = "Iris", Apellido = "Mendoza", Correo = "i@i.i", Telefono = "8494736796", Clave = EncryptSHA256.GetSHA256("1234"), FechaCreacion = DateTime.Now, Estado = 1 },
-                new Usuario { UsuarioId = 3, Nombre = "Ronald", Apellido = "Mendoza", Correo = "r@r.r", Telefono = "8494736796", Clave = EncryptSHA256.GetSHA256("1234"), FechaCreacion = DateTime.Now, Estado = 1 },
-                new Usuario { UsuarioId = 4, Nombre = "Oly", Apellido = "Lopez", Correo = "o@o.o", Telefono = "8494736796", Clave = EncryptSHA256.GetSHA256("1234"), FechaCreacion = DateTime.Now, Estado = 1 },
-                new Usuario { UsuarioId = 5, Nombre = "Jarissa", Apellido = "Nicole", Correo = "j@j.j", Telefono = "8494736796", Clave = EncryptSHA256.GetSHA256("1234"), FechaCreacion = DateTime.Now, Estado = 1 }
+                new Usuario { UsuarioId = 1, Nombre = "Albert", Apellido = "Mendoza", Correo = "a@a.a", Telefono = "8494736796", Clave = EncryptSHA256.GetSHA256("1234"), FechaCreacion = DateTime.Now, Estado = 1, Rol = 1 },
+                new Usuario { UsuarioId = 2, Nombre = "Iris", Apellido = "Mendoza", Correo = "i@i.i", Telefono = "8494736796", Clave = EncryptSHA256.GetSHA256("1234"), FechaCreacion = DateTime.Now, Estado = 1, Rol = 1 },
+                new Usuario { UsuarioId = 3, Nombre = "Ronald", Apellido = "Mendoza", Correo = "r@r.r", Telefono = "8494736796", Clave = EncryptSHA256.GetSHA256("1234"), FechaCreacion = DateTime.Now, Estado = 1, Rol = 1 },
+                new Usuario { UsuarioId = 4, Nombre = "Oly", Apellido = "Lopez", Correo = "o@o.o", Telefono = "8494736796", Clave = EncryptSHA256.GetSHA256("1234"), FechaCreacion = DateTime.Now, Estado = 1, Rol = 2 },
+                new Usuario { UsuarioId = 5, Nombre = "Jarissa", Apellido = "Nicole", Correo = "j@j.j", Telefono = "8494736796", Clave = EncryptSHA256.GetSHA256("1234"), FechaCreacion = DateTime.Now, Estado = 1, Rol = 2 }
                 );
 
             modelBuilder.Entity<Proyecto>().HasData(

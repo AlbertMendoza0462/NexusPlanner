@@ -25,7 +25,8 @@ namespace NexusPlanner.Migrations
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    Clave = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Clave = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rol = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -141,14 +142,14 @@ namespace NexusPlanner.Migrations
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
-                columns: new[] { "UsuarioId", "Apellido", "Clave", "Correo", "Estado", "FechaCreacion", "Nombre", "Telefono" },
+                columns: new[] { "UsuarioId", "Apellido", "Clave", "Correo", "Estado", "FechaCreacion", "Nombre", "Rol", "Telefono" },
                 values: new object[,]
                 {
-                    { 1, "Mendoza", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "a@a.a", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(992), "Albert", "8494736796" },
-                    { 2, "Mendoza", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "i@i.i", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1023), "Iris", "8494736796" },
-                    { 3, "Mendoza", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "r@r.r", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1048), "Ronald", "8494736796" },
-                    { 4, "Lopez", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "o@o.o", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1076), "Oly", "8494736796" },
-                    { 5, "Nicole", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "j@j.j", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1118), "Jarissa", "8494736796" }
+                    { 1, "Mendoza", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "a@a.a", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4516), "Albert", 1, "8494736796" },
+                    { 2, "Mendoza", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "i@i.i", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4539), "Iris", 1, "8494736796" },
+                    { 3, "Mendoza", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "r@r.r", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4559), "Ronald", 1, "8494736796" },
+                    { 4, "Lopez", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "o@o.o", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4616), "Oly", 2, "8494736796" },
+                    { 5, "Nicole", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", "j@j.j", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4637), "Jarissa", 2, "8494736796" }
                 });
 
             migrationBuilder.InsertData(
@@ -156,9 +157,9 @@ namespace NexusPlanner.Migrations
                 columns: new[] { "ProyectoId", "Descripcion", "Estado", "FechaCreacion", "FechaFinal", "Nombre", "UsuarioId" },
                 values: new object[,]
                 {
-                    { 1, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1221), new DateOnly(2025, 3, 3), "Proyecto de ejemplo", 1 },
-                    { 2, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1224), new DateOnly(2026, 6, 6), "Proyecto de ejemplo 1", 2 },
-                    { 3, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1226), new DateOnly(2027, 9, 9), "Proyecto de ejemplo 2", 3 }
+                    { 1, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4737), new DateOnly(2025, 3, 3), "Proyecto de ejemplo", 1 },
+                    { 2, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4741), new DateOnly(2026, 6, 6), "Proyecto de ejemplo 1", 2 },
+                    { 3, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4742), new DateOnly(2027, 9, 9), "Proyecto de ejemplo 2", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -179,12 +180,12 @@ namespace NexusPlanner.Migrations
                 columns: new[] { "SolicitudId", "Estado", "FechaCreacion", "FechaRespuesta", "ProyectoId", "UsuarioId" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1317), null, 1, 4 },
-                    { 2, 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1320), null, 1, 5 },
-                    { 3, 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1321), null, 2, 1 },
-                    { 4, 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1323), null, 2, 5 },
-                    { 5, 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1324), null, 3, 1 },
-                    { 6, 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1325), null, 3, 2 }
+                    { 1, 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4831), null, 1, 4 },
+                    { 2, 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4833), null, 1, 5 },
+                    { 3, 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4834), null, 2, 1 },
+                    { 4, 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4835), null, 2, 5 },
+                    { 5, 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4836), null, 3, 1 },
+                    { 6, 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4837), null, 3, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -192,18 +193,18 @@ namespace NexusPlanner.Migrations
                 columns: new[] { "TareaId", "Descripcion", "Estado", "FechaCreacion", "FechaFinal", "Nombre", "ProyectoId", "UsuarioId" },
                 values: new object[,]
                 {
-                    { 1, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1274), new DateOnly(2024, 9, 10), "Tarea de ejemplo", 1, 2 },
-                    { 2, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1276), new DateOnly(2024, 9, 10), "Tarea de ejemplo 1", 1, 2 },
-                    { 3, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1278), new DateOnly(2024, 9, 10), "Tarea de ejemplo 2", 1, 3 },
-                    { 4, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1280), new DateOnly(2024, 9, 10), "Tarea de ejemplo 3", 1, 3 },
-                    { 5, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1282), new DateOnly(2024, 9, 10), "Tarea de ejemplo 4", 2, 3 },
-                    { 6, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1283), new DateOnly(2024, 9, 10), "Tarea de ejemplo 5", 2, 3 },
-                    { 7, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1285), new DateOnly(2024, 9, 10), "Tarea de ejemplo 6", 2, 4 },
-                    { 8, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1286), new DateOnly(2024, 9, 10), "Tarea de ejemplo 7", 2, 4 },
-                    { 9, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1288), new DateOnly(2024, 9, 10), "Tarea de ejemplo 8", 3, 4 },
-                    { 10, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1290), new DateOnly(2024, 9, 10), "Tarea de ejemplo 9", 3, 4 },
-                    { 11, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1291), new DateOnly(2024, 9, 10), "Tarea de ejemplo 10", 3, 5 },
-                    { 12, "Esta es la descripción", 1, new DateTime(2024, 4, 5, 14, 47, 16, 134, DateTimeKind.Local).AddTicks(1292), new DateOnly(2024, 9, 10), "Tarea de ejemplo 11", 3, 5 }
+                    { 1, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4786), new DateOnly(2024, 9, 10), "Tarea de ejemplo", 1, 2 },
+                    { 2, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4789), new DateOnly(2024, 9, 10), "Tarea de ejemplo 1", 1, 2 },
+                    { 3, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4790), new DateOnly(2024, 9, 10), "Tarea de ejemplo 2", 1, 3 },
+                    { 4, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4792), new DateOnly(2024, 9, 10), "Tarea de ejemplo 3", 1, 3 },
+                    { 5, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4793), new DateOnly(2024, 9, 10), "Tarea de ejemplo 4", 2, 3 },
+                    { 6, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4795), new DateOnly(2024, 9, 10), "Tarea de ejemplo 5", 2, 3 },
+                    { 7, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4796), new DateOnly(2024, 9, 10), "Tarea de ejemplo 6", 2, 4 },
+                    { 8, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4797), new DateOnly(2024, 9, 10), "Tarea de ejemplo 7", 2, 4 },
+                    { 9, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4799), new DateOnly(2024, 9, 10), "Tarea de ejemplo 8", 3, 4 },
+                    { 10, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4800), new DateOnly(2024, 9, 10), "Tarea de ejemplo 9", 3, 4 },
+                    { 11, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4801), new DateOnly(2024, 9, 10), "Tarea de ejemplo 10", 3, 5 },
+                    { 12, "Esta es la descripción", 1, new DateTime(2024, 4, 6, 11, 20, 32, 561, DateTimeKind.Local).AddTicks(4803), new DateOnly(2024, 9, 10), "Tarea de ejemplo 11", 3, 5 }
                 });
 
             migrationBuilder.CreateIndex(

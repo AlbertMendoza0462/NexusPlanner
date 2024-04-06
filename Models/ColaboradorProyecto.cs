@@ -16,8 +16,8 @@ namespace NexusPlanner.Models
         public Usuario? Usuario { get; set; }
         public Proyecto? Proyecto { get; set; }
         [NotMapped]
-        public List<Proyecto> Proyectos { get; set; }
+        public List<Proyecto>? Proyectos { get; set; }
         [NotMapped]
-        public List<Usuario> Colaboradores { get; set; }
+        public List<Usuario>? Colaboradores { get; set; }
     }
 }

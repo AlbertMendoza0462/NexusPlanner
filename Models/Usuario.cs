@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NexusPlanner.ViewModels;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
@@ -7,6 +8,20 @@ namespace NexusPlanner.Models
     [Table("Usuarios")]
     public class Usuario
     {
+        public Usuario()
+        {
+        }
+
+        public Usuario(NuevoUsuarioViewModel usuario)
+        {
+            UsuarioId = usuario.UsuarioId;
+            Nombre = usuario.Nombre;
+            Apellido = usuario.Apellido;
+            Correo = usuario.Correo;
+            Telefono = usuario.Telefono;
+            Clave = usuario.Clave;
+        }
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UsuarioId { get; set; }
         [Required(ErrorMessage = "El nombre no debe estar en blanco.")]
@@ -18,13 +33,12 @@ namespace NexusPlanner.Models
         [Phone, AllowNull]
         public string? Telefono { get; set; }
         [Required]
-        public DateTime FechaCreacion { get; set; }
-        [MinLength(1), Required]
-        public int Estado { get; set; }
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
+        [Range(1, int.MaxValue), Required]
+        public int Estado { get; set; } = 1;
         [Required(ErrorMessage = "La clave no debe estar en blanco.")]
         public string Clave { get; set; }
-        [NotMapped]
-        public List<Proyecto> Proyectos { get; set; }
-
+        [NotMapped, AllowNull]
+        public List<Proyecto>? Proyectos { get; set; }
     }
 }

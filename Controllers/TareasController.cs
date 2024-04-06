@@ -63,6 +63,88 @@ namespace NexusPlanner.Controllers
             }
         }
 
+        // GET: api/Tareas/5
+        [HttpGet("PorUsuario/{id}")]
+        public async Task<ActionResult<IEnumerable<Tarea>>> ListarPorUsuario(int id)
+        {
+            try
+            {
+                if (id < 1)
+                {
+                    throw new Exception($"El campo '{nameof(id)}' debe ser mayor que 0.");
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Source + ": " + e.Message);
+            }
+
+            try
+            {
+                return Ok(await _bll.ListarPorUsuario(id));
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Source + ": " + e.Message);
+            }
+        }
+
+        // GET: api/Tareas/5
+        [HttpGet("PorProyecto/{id}")]
+        public async Task<ActionResult<IEnumerable<Tarea>>> ListarPorProyecto(int id)
+        {
+            try
+            {
+                if (id < 1)
+                {
+                    throw new Exception($"El campo '{nameof(id)}' debe ser mayor que 0.");
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Source + ": " + e.Message);
+            }
+
+            try
+            {
+                return Ok(await _bll.ListarPorProyecto(id));
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Source + ": " + e.Message);
+            }
+        }
+
+        // GET: api/Tareas/5
+        [HttpGet("PorProyectoUsuario/{proyectoId}/{usuarioId}")]
+        public async Task<ActionResult<IEnumerable<Tarea>>> ListarPorProyectoUsuario(int proyectoId, int usuarioId)
+        {
+            try
+            {
+                if (proyectoId < 1)
+                {
+                    throw new Exception($"El campo '{nameof(proyectoId)}' debe ser mayor que 0.");
+                }
+                else if (usuarioId < 1)
+                {
+                    throw new Exception($"El campo '{nameof(usuarioId)}' debe ser mayor que 0.");
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Source + ": " + e.Message);
+            }
+
+            try
+            {
+                return Ok(await _bll.ListarPorProyectoUsuario(proyectoId, usuarioId));
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Source + ": " + e.Message);
+            }
+        }
+
         // POST: api/Tareas
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -117,12 +199,12 @@ namespace NexusPlanner.Controllers
                 }
                 else
                 {
-                    throw new Exception($"La '{nameof(entidad.TareaId)}' '{entidad.TareaId}' no existe ne la base de datos.");
+                    throw new Exception($"La '{nameof(entidad.TareaId)}' '{id}' no existe ne la base de datos.");
                 }
             }
             catch (Exception e)
             {
-                return Problem(e.Source + ": " + e.Message);
+                return BadRequest(e.Source + ": " + e.Message);
             }
         }
 
@@ -152,12 +234,12 @@ namespace NexusPlanner.Controllers
                 }
                 else
                 {
-                    throw new Exception($"La '{nameof(entidad.TareaId)}' '{entidad.TareaId}' no existe ne la base de datos.");
+                    throw new Exception($"La '{nameof(entidad.TareaId)}' '{id}' no existe ne la base de datos.");
                 }
             }
             catch (Exception e)
             {
-                return Problem(e.Source + ": " + e.Message);
+                return BadRequest(e.Source + ": " + e.Message);
             }
         }
 
@@ -187,12 +269,12 @@ namespace NexusPlanner.Controllers
                 }
                 else
                 {
-                    throw new Exception($"La '{nameof(entidad.TareaId)}' '{entidad.TareaId}' no existe ne la base de datos.");
+                    throw new Exception($"La '{nameof(entidad.TareaId)}' '{id}' no existe ne la base de datos.");
                 }
             }
             catch (Exception e)
             {
-                return Problem(e.Source + ": " + e.Message);
+                return BadRequest(e.Source + ": " + e.Message);
             }
         }
 
@@ -222,12 +304,12 @@ namespace NexusPlanner.Controllers
                 }
                 else
                 {
-                    throw new Exception($"La '{nameof(entidad.TareaId)}' '{entidad.TareaId}' no existe ne la base de datos.");
+                    throw new Exception($"La '{nameof(entidad.TareaId)}' '{id}' no existe ne la base de datos.");
                 }
             }
             catch (Exception e)
             {
-                return Problem(e.Source + ": " + e.Message);
+                return BadRequest(e.Source + ": " + e.Message);
             }
         }
 
@@ -262,7 +344,7 @@ namespace NexusPlanner.Controllers
             }
             catch (Exception e)
             {
-                return Problem(e.Source + ": " + e.Message);
+                return BadRequest(e.Source + ": " + e.Message);
             }
         }
     }

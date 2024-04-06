@@ -37,6 +37,58 @@ namespace NexusPlanner.Controllers
         }
 
         // GET: api/Proyectos/5
+        [HttpGet("MisProyectos/{id}")]
+        public async Task<ActionResult<IEnumerable<Proyecto>>> ListarMisProyectos(int id)
+        {
+            try
+            {
+                if (id < 1)
+                {
+                    throw new Exception($"El campo '{nameof(id)}' debe ser mayor que 0.");
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Source + ": " + e.Message);
+            }
+
+            try
+            {
+                return await _bll.ListarMisProyectos(id);
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Source + ": " + e.Message);
+            }
+        }
+
+        // GET: api/Proyectos/5
+        [HttpGet("OtrosProyectos/{id}")]
+        public async Task<ActionResult<IEnumerable<Proyecto>>> ListarOtrosProyectos(int id)
+        {
+            try
+            {
+                if (id < 1)
+                {
+                    throw new Exception($"El campo '{nameof(id)}' debe ser mayor que 0.");
+                }
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Source + ": " + e.Message);
+            }
+
+            try
+            {
+                return await _bll.ListarOtrosProyectos(id);
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Source + ": " + e.Message);
+            }
+        }
+
+        // GET: api/Proyectos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Proyecto>> Get(int id)
         {
@@ -117,12 +169,12 @@ namespace NexusPlanner.Controllers
                 }
                 else
                 {
-                    throw new Exception($"La '{nameof(entidad.ProyectoId)}' '{entidad.ProyectoId}' no existe ne la base de datos.");
+                    throw new Exception($"La '{nameof(entidad.ProyectoId)}' '{id}' no existe ne la base de datos.");
                 }
             }
             catch (Exception e)
             {
-                return Problem(e.Source + ": " + e.Message);
+                return BadRequest(e.Source + ": " + e.Message);
             }
         }
 
@@ -152,12 +204,12 @@ namespace NexusPlanner.Controllers
                 }
                 else
                 {
-                    throw new Exception($"La '{nameof(entidad.ProyectoId)}' '{entidad.ProyectoId}' no existe ne la base de datos.");
+                    throw new Exception($"La '{nameof(entidad.ProyectoId)}' '{id}' no existe ne la base de datos.");
                 }
             }
             catch (Exception e)
             {
-                return Problem(e.Source + ": " + e.Message);
+                return BadRequest(e.Source + ": " + e.Message);
             }
         }
 
@@ -192,7 +244,7 @@ namespace NexusPlanner.Controllers
             }
             catch (Exception e)
             {
-                return Problem(e.Source + ": " + e.Message);
+                return BadRequest(e.Source + ": " + e.Message);
             }
         }
     }

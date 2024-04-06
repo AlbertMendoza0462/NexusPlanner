@@ -13,6 +13,6 @@ namespace NexusPlanner.Models
         public int UsuarioId { get; set; }
         [Required]
         public DateTime FechaCreacion { get; set; }
-        public Usuario Usuario { get; set; }
+        public Usuario? Usuario { get; set; }
     }
 }

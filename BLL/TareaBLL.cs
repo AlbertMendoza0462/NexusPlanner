@@ -28,14 +28,42 @@ namespace NexusPlanner.BLL
                 .Include(entidad => entidad.Usuario)
                 .Include(entidad => entidad.Proyecto)
                 .AsNoTracking()
-                .FirstOrDefaultAsync(entidad => entidad.TareaId == id && entidad.Estado != 2);
+                .FirstOrDefaultAsync(entidad => entidad.TareaId == id && entidad.Estado != 2 && entidad.Proyecto.Estado != 2);
         }
 
         public async Task<List<Tarea>> Listar()
         {
             return await _contexto.Tareas
-                .Where(entidad => entidad.Estado != 2)
+                .Where(entidad => entidad.Estado != 2 && entidad.Proyecto.Estado != 2)
                 .Include(entidad => entidad.Usuario)
+                .Include(entidad => entidad.Proyecto)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+        public async Task<List<Tarea>> ListarPorUsuario(int id)
+        {
+            return await _contexto.Tareas
+                .Where(entidad => entidad.UsuarioId == id && entidad.Estado != 2 && entidad.Proyecto.Estado != 2)
+                .Include(entidad => entidad.Proyecto)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+
+        public async Task<List<Tarea>> ListarPorProyecto(int id)
+        {
+            return await _contexto.Tareas
+                .Where(entidad => entidad.ProyectoId == id && entidad.Estado != 2 && entidad.Proyecto.Estado != 2)
+                .Include(entidad => entidad.Proyecto)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+        public async Task<List<Tarea>> ListarPorProyectoUsuario(int proyectoId, int usuarioId)
+        {
+            return await _contexto.Tareas
+                .Where(entidad => entidad.UsuarioId == usuarioId && entidad.ProyectoId == proyectoId && entidad.Estado != 2 && entidad.Proyecto.Estado != 2)
                 .Include(entidad => entidad.Proyecto)
                 .AsNoTracking()
                 .ToListAsync();
@@ -73,7 +101,7 @@ namespace NexusPlanner.BLL
             }
             else
             {
-                throw new Exception("El turno no existe en la base de datos.");
+                throw new Exception("El dato no existe en la base de datos.");
             }
         }
 
@@ -97,7 +125,7 @@ namespace NexusPlanner.BLL
             }
             else
             {
-                throw new Exception("El turno no existe en la base de datos.");
+                throw new Exception("El dato no existe en la base de datos.");
             }
         }
 
@@ -121,7 +149,7 @@ namespace NexusPlanner.BLL
             }
             else
             {
-                throw new Exception("El turno no existe en la base de datos.");
+                throw new Exception("El dato no existe en la base de datos.");
             }
         }
 
@@ -145,7 +173,7 @@ namespace NexusPlanner.BLL
             }
             else
             {
-                throw new Exception("El turno no existe en la base de datos.");
+                throw new Exception("El dato no existe en la base de datos.");
             }
         }
 
@@ -169,7 +197,7 @@ namespace NexusPlanner.BLL
             }
             else
             {
-                throw new Exception("El turno no existe en la base de datos.");
+                throw new Exception("El dato no existe en la base de datos.");
             }
         }
 
@@ -199,7 +227,7 @@ namespace NexusPlanner.BLL
             }
             else
             {
-                throw new Exception("El turno no existe en la base de datos.");
+                throw new Exception("El dato no existe en la base de datos.");
             }
         }
     }

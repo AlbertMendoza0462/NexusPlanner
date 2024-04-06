@@ -20,6 +20,13 @@ namespace NexusPlanner.DAL
         {
             base.OnModelCreating(modelBuilder);
 
+            //modelBuilder.Entity<Tarea>()
+            //    .HasOne(x => x.Proyecto)
+            //    .WithMany(x => x.Tareas)
+            //    .HasForeignKey(x => x.TareaId)
+            //    .OnDelete(DeleteBehavior.Restrict)
+            //    .IsRequired();
+
             modelBuilder.Entity<Solicitud>()
                 .HasOne(c => c.Proyecto)
                 .WithMany()
@@ -33,6 +40,7 @@ namespace NexusPlanner.DAL
             modelBuilder.Entity<Tarea>()
                 .HasOne(c => c.Proyecto)
                 .WithMany()
+                .HasForeignKey(x => x.ProyectoId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Usuario>().HasData(

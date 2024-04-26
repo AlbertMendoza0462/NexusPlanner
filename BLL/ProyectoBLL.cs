@@ -7,6 +7,7 @@ using NexusPlanner.Models;
 using System.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Threading;
+using Microsoft.Build.Evaluation;
 
 namespace NexusPlanner.BLL
 {
@@ -52,6 +53,7 @@ namespace NexusPlanner.BLL
 
                 proyecto.Tareas = await _contexto.Tareas
                         .Where(tarea => tarea.ProyectoId == proyecto.ProyectoId && tarea.Estado != 2)
+                        .Include(entidad => entidad.Usuario)
                         .ToListAsync();
             }
 
@@ -75,6 +77,61 @@ namespace NexusPlanner.BLL
             return proyectos;
 
         }
+
+        public async Task<int> TotalProyectos()
+        {
+            return await _contexto.Proyectos.CountAsync();
+        }
+
+        public async Task<int> ProyectosTerminados()
+        {
+            return await _contexto.Proyectos
+                .Where(proyecto => proyecto.Estado == 3)
+                .CountAsync();
+        }
+
+        public async Task<int> ProyectosProceso()
+        {
+            return await _contexto.Proyectos
+                .Where(proyecto => proyecto.Estado == 1)
+                .CountAsync();
+        }
+
+        public async Task<int> TotalTareas()
+        {
+            return await _contexto.Tareas.CountAsync();
+        }
+
+        public async Task<int> TareasTerminados()
+        {
+            return await _contexto.Tareas
+                .Where(tarea => tarea.Estado == 3)
+                .CountAsync();
+        }
+
+        public async Task<int> TareasProceso()
+        {
+            return await _contexto.Tareas
+                .Where(tarea => tarea.Estado == 4)
+                .CountAsync();
+        }
+
+        public async Task<int> TareasnoIniciados()
+        {
+            return await _contexto.Tareas
+                .Where(tarea => tarea.Estado == 1)
+                .CountAsync();
+        }
+
+        public async Task<List<ContadorLogin>> ListarLoginsPorMeses()
+        {
+
+            return await _contexto.ContadorLogins
+                .FromSql($"SELECT COUNT (*) AS Contador, DATENAME(MONTH, FechaCreacion) + ' - ' + DATENAME(YEAR, FechaCreacion) Mes\r\nFROM [NexusPlannerDB].[dbo].[Logins]\r\n   WHERE FechaCreacion >= dateadd(MM, -12, cast(getdate() as date))\r\n     AND FechaCreacion < GETDATE()\r\nGROUP BY MONTH(FechaCreacion), YEAR(FechaCreacion), DATENAME(MONTH, FechaCreacion) + ' - ' + DATENAME(YEAR, FechaCreacion)\r\nORDER BY YEAR(FechaCreacion) asc, MONTH(FechaCreacion) ASC;")
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
         public async Task<List<Proyecto>> ListarMisProyectos(int id)
         {
             var misProyectos = await _contexto.Proyectos
@@ -85,9 +142,20 @@ namespace NexusPlanner.BLL
 
             foreach (var proyecto in misProyectos)
             {
-                proyecto.Tareas = await _contexto.Tareas
-                    .Where(tarea => tarea.ProyectoId == proyecto.ProyectoId && tarea.Estado != 2)
+                proyecto.Colaboradores = await _contexto.Usuarios
+                    .Where(entidad => entidad.Estado != 2 && _contexto.ColaboradoresProyecto
+                        .Where(c => c.ProyectoId == id)
+                        .Select(c => c.UsuarioId)
+                        .ToList()
+                        .Contains(entidad.UsuarioId)
+                     )
+                    .AsNoTracking()
                     .ToListAsync();
+
+                proyecto.Tareas = await _contexto.Tareas
+                        .Where(tarea => tarea.ProyectoId == proyecto.ProyectoId && tarea.Estado != 2)
+                        .Include(entidad => entidad.Usuario)
+                        .ToListAsync();
             }
 
             return misProyectos;
@@ -108,9 +176,20 @@ namespace NexusPlanner.BLL
 
             foreach (var proyecto in proyectos)
             {
-                proyecto.Tareas = await _contexto.Tareas
-                    .Where(tarea => tarea.ProyectoId == proyecto.ProyectoId && tarea.Estado != 2)
+                proyecto.Colaboradores = await _contexto.Usuarios
+                    .Where(entidad => entidad.Estado != 2 && _contexto.ColaboradoresProyecto
+                        .Where(c => c.ProyectoId == id)
+                        .Select(c => c.UsuarioId)
+                        .ToList()
+                        .Contains(entidad.UsuarioId)
+                     )
+                    .AsNoTracking()
                     .ToListAsync();
+
+                proyecto.Tareas = await _contexto.Tareas
+                        .Where(tarea => tarea.ProyectoId == proyecto.ProyectoId && tarea.Estado != 2)
+                        .Include(entidad => entidad.Usuario)
+                        .ToListAsync();
             }
 
             return proyectos;
@@ -205,6 +284,8 @@ namespace NexusPlanner.BLL
 
                         foreach (var tarea in entidad.Tareas)
                         {
+                            tarea.ProyectoId = entidadDB.ProyectoId;
+                            tarea.Usuario = null;
                             if (!await _tareaBLL.Guardar(tarea))
                             {
                                 throw new Exception("No fue posible guardar las tareas");
@@ -242,7 +323,8 @@ namespace NexusPlanner.BLL
                                         FechaCreacion = usuario.FechaCreacion,
                                         Estado = usuario.Estado
                                     };
-
+                                    solicitud.Proyecto = null;
+                                    solicitud.Usuario = null;
                                     _contexto.Add(solicitud);
                                     var guardoSolicitud = await _contexto.SaveChangesAsync() > 0;
                                     _contexto.Entry(solicitud).State = EntityState.Detached;

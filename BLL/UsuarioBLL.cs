@@ -4,6 +4,8 @@ using NexusPlanner.Interfaces.BLL;
 using NexusPlanner.Models;
 using NexusPlanner.Utils;
 using NexusPlanner.ViewModels;
+using System.Data;
+using System.Diagnostics.Metrics;
 
 namespace NexusPlanner.BLL
 {
@@ -84,6 +86,19 @@ namespace NexusPlanner.BLL
             entidad.Clave = EncryptSHA256.GetSHA256(entidad.Clave);
             entidad.FechaCreacion = DateTime.Now;
             entidad.Estado = 1;
+            entidad.Rol = 2;
+
+            _contexto.Add(entidad);
+            var guardo = await _contexto.SaveChangesAsync() > 0;
+            _contexto.Entry(entidad).State = EntityState.Detached;
+            return guardo;
+        }
+
+        public async Task<bool> InsertarLogin(int id)
+        {
+            var entidad = new Login();
+            entidad.UsuarioId = id;
+            entidad.FechaCreacion = DateTime.Now;
 
             _contexto.Add(entidad);
             var guardo = await _contexto.SaveChangesAsync() > 0;

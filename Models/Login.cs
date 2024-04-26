@@ -9,10 +9,9 @@ namespace NexusPlanner.Models
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LoginId { get; set; }
-        [Required, ForeignKey(nameof(Usuario))]
+        [Required]
         public int UsuarioId { get; set; }
         [Required]
         public DateTime FechaCreacion { get; set; }
-        public Usuario? Usuario { get; set; }
     }
 }

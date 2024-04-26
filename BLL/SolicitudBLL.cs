@@ -62,6 +62,7 @@ namespace NexusPlanner.BLL
             return await _contexto.Solicitudes
                 .Include(entidad => entidad.Usuario)
                 .Include(entidad => entidad.Proyecto)
+                .Include(entidad => entidad.Proyecto.Usuario)
                 .Where(entidad => entidad.UsuarioId == id && entidad.Estado != 2 && entidad.Proyecto.Estado != 2)
                 .AsNoTracking()
                 .ToListAsync();

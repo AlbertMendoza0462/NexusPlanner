@@ -22,6 +22,31 @@ namespace NexusPlanner.Controllers
             _bll = bll;
         }
 
+        [HttpGet("GetDashboardData")]
+        public async Task<ActionResult<DashboardData>> GetDashboardData()
+        {
+            try
+            {
+                return Ok(new DashboardData
+                {
+                    totalProyectos = await _bll.TotalProyectos(),
+                    proyectosTerminados = await _bll.ProyectosTerminados(),
+                    proyectosProceso = await _bll.ProyectosProceso(),
+                    totalTareas = await _bll.TotalTareas(),
+                    tareasTerminados = await _bll.TareasTerminados(),
+                    tareasProceso = await _bll.TareasProceso(),
+                    tareasnoInicianos = await _bll.TareasnoIniciados(),
+                    //EstadoUsuario = ,
+                    //Roles = ,
+                    Meses = await _bll.ListarLoginsPorMeses()
+                });
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Source + ": " + e.Message);
+            }
+        }
+
         // GET: api/Proyectos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Proyecto>>> GetAll()

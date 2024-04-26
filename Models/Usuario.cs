@@ -37,8 +37,7 @@ namespace NexusPlanner.Models
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
         [Range(1, int.MaxValue), Required]
         public int Estado { get; set; } = 1;
-        [Required(ErrorMessage = "La clave no debe estar en blanco.")]
-        public string Clave { get; set; }
+        public string? Clave { get; set; }
         public int Rol { get; set; } = 2;
         [NotMapped, AllowNull]
         public List<Proyecto>? Proyectos { get; set; }

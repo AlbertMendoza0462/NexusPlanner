@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +21,7 @@ namespace NexusPlanner.Controllers
     public class UsuariosController : ControllerBase
     {
         private readonly UsuarioBLL _bll;
+        private readonly ProyectoBLL _proyectoBll;
 
         public UsuariosController(UsuarioBLL bll)
         {
@@ -139,15 +141,18 @@ namespace NexusPlanner.Controllers
                 var guardo = await _bll.Guardar(entidad);
                 if (guardo)
                 {
-                    try
+                    if (entidad.UsuarioId == 0)
                     {
-                        CorreoBienvenida plantilla = new CorreoBienvenida(entidad.Nombre);
-                        Correo correo = new Correo(entidad.Correo, entidad.Nombre, plantilla.Asunto, plantilla.Cuerpo);
-                        correo.Send();
-                    }
-                    catch (Exception e)
-                    {
+                        try
+                        {
+                            CorreoBienvenida plantilla = new CorreoBienvenida(entidad.Nombre);
+                            Correo correo = new Correo(entidad.Correo, entidad.Nombre, plantilla.Asunto, plantilla.Cuerpo);
+                            correo.Send();
+                        }
+                        catch (Exception e)
+                        {
 
+                        }
                     }
                     return Ok(guardo);
                 }
@@ -188,6 +193,7 @@ namespace NexusPlanner.Controllers
                 var usuario = await _bll.BuscarPorCorreoYClave(entidad.Correo, entidad.Clave);
                 if (usuario != null)
                 {
+                    await _bll.InsertarLogin(entidad.UsuarioId);
                     return Ok(usuario);
                 }
                 else
